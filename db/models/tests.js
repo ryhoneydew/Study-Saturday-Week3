@@ -1,10 +1,10 @@
-'use strict';
-const Sequelize = require('sequelize');
+"use strict";
+const Sequelize = require("sequelize");
 const Op = Sequelize.Op;
-const db = require('../db');
-const Student = require('./students');
+const db = require("../db");
+const Student = require("./students");
 
-const Test = db.define('test', {
+const Test = db.define("test", {
   subject: {
     type: Sequelize.STRING,
     allowNull: false
@@ -33,6 +33,7 @@ Test.findBySubject = function(type) {
   });
 };
 
-Test.belongsTo(Student, { as: 'student' });
+Test.belongsTo(Student, { as: "student" });
+Student.hasMany(Test);
 
 module.exports = Test;
